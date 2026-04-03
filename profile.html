@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-font-sans: var(--font-sans);
+        --font-font-heading: var(--font-heading);
+        --font-font-serif: var(--font-serif);
+        --font-font-mono: var(--font-mono);
+
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+      }
+
+      :root {
+          --background: #0D0E12;
+        --foreground: #F8F9FA;
+        --primary: #4361EE;
+        --primary-foreground: #FFFFFF;
+        --secondary: #1E202A;
+        --secondary-foreground: #F8F9FA;
+        --muted: #232530;
+        --muted-foreground: #71768B;
+        --accent: #4361EE;
+        --accent-foreground: #FFFFFF;
+        --destructive: #EF4444;
+        --card: #15171E;
+        --card-foreground: #F8F9FA;
+        --popover: #15171E;
+        --popover-foreground: #F8F9FA;
+        --border: #1E202A;
+        --input: #15171E;
+        --ring: #4361EE;
+        --chart-1: #4361EE;
+        --chart-2: #8B5CF6;
+        --chart-3: #06B6D4;
+        --chart-4: #10B981;
+        --chart-5: #F59E0B;
+
+        --font-sans: "Inter";
+        --font-heading: "Inter";
+        --font-serif: "Playfair Display";
+        --font-mono: "JetBrains Mono";
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/30 antialiased flex flex-col"
+    >
+      <header
+        class="sticky top-0 z-40 bg-background/95 backdrop-blur-md px-4 pt-12 pb-4 flex items-center justify-between"
+      >
+        <button
+          class="w-8 h-8 rounded-full flex items-center justify-center bg-secondary hover:bg-muted transition-colors"
+        >
+          <iconify-icon icon="hugeicons:arrow-left-01" class="text-xl"></iconify-icon></button
+        ><button class="text-primary font-medium text-[15px]">Edit</button>
+      </header>
+      <main class="flex-1 px-4">
+        <div class="flex flex-col items-center mt-4">
+          <div class="relative">
+            <img
+              src="https://lh3.googleusercontent.com/a/ACg8ocL7jcacFvOGeiTu5UjpWNRfwJxwQWbUJxFsVHLxm2QDntsLLQ=s96-c"
+              alt="Алексей"
+              class="w-28 h-28 rounded-3xl object-cover bg-secondary p-1 border border-border"
+            />
+            <div
+              class="absolute -bottom-1 -right-1 w-6 h-6 bg-background rounded-full flex items-center justify-center border-2 border-background"
+            >
+              <div class="w-3.5 h-3.5 bg-green-500 rounded-full"></div>
+            </div>
+          </div>
+          <h2 class="mt-4 text-2xl font-medium font-heading tracking-tight">Алексей</h2>
+          <p class="text-primary text-sm font-medium">online</p>
+        </div>
+        <div class="mt-10 space-y-4">
+          <div class="bg-card/50 rounded-2xl p-5 border border-border/20">
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <div class="flex flex-col">
+                  <span
+                    class="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-0.5"
+                    >Username</span
+                  ><span class="text-[15px] font-medium">@alexey_dev</span>
+                </div>
+                <iconify-icon
+                  icon="hugeicons:copy-01"
+                  class="text-muted-foreground text-lg"
+                ></iconify-icon>
+              </div>
+              <div class="h-px bg-border/30 w-full"></div>
+              <div class="flex flex-col">
+                <span
+                  class="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-1"
+                  >Bio</span
+                >
+                <p class="text-[14px] font-light leading-relaxed text-foreground/90">
+                  Building the future of communication. Focused on performance, privacy, and
+                  minimalist design.
+                </p>
+              </div>
+              <div class="h-px bg-border/30 w-full"></div>
+              <div class="flex items-center justify-between">
+                <div class="flex flex-col">
+                  <span
+                    class="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-0.5"
+                    >Phone</span
+                  ><span class="text-[15px] font-medium">+7 (999) 123-45-67</span>
+                </div>
+                <iconify-icon
+                  icon="boxicons:eye-slash"
+                  class="text-muted-foreground text-lg"
+                ></iconify-icon>
+              </div>
+            </div>
+          </div>
+          <div class="bg-card/50 rounded-2xl p-5 border border-border/20">
+            <h3 class="text-[11px] font-bold text-muted-foreground uppercase tracking-wider mb-4">
+              Linked Devices
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground"
+                  >
+                    <iconify-icon icon="hugeicons:laptop-01" class="text-xl"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[14px] font-medium">MacBook Pro M2</span
+                    ><span class="text-[11px] text-muted-foreground"
+                      >Noris Desktop 2.4 • Online</span
+                    >
+                  </div>
+                </div>
+                <iconify-icon
+                  icon="hugeicons:arrow-right-01"
+                  class="text-muted-foreground"
+                ></iconify-icon>
+              </div>
+              <div class="flex items-center justify-between opacity-70">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground"
+                  >
+                    <iconify-icon icon="hugeicons:tablet-01" class="text-xl"></iconify-icon>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[14px] font-medium">iPad Air</span
+                    ><span class="text-[11px] text-muted-foreground">London, UK • 2 days ago</span>
+                  </div>
+                </div>
+                <iconify-icon
+                  icon="hugeicons:arrow-right-01"
+                  class="text-muted-foreground"
+                ></iconify-icon>
+              </div>
+            </div>
+            <button
+              class="w-full mt-6 py-3 rounded-xl border border-border hover:bg-secondary transition-colors text-[13px] font-medium"
+            >
+              Link New Device
+            </button>
+          </div>
+        </div>
+      </main>
+      <nav
+        class="fixed bottom-0 left-0 right-0 h-20 bg-background/80 backdrop-blur-xl border-t border-border/50 flex items-center justify-around px-2 z-50"
+      >
+        <a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:message-multiple-01" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Chats</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:call" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Calls</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:contact-book" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Contacts</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary"
+          ><iconify-icon icon="hugeicons:user-circle" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Profile</span></a
+        >
+      </nav>
+    </div>
+  </body>
+</html>

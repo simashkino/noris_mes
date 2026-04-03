@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-font-sans: var(--font-sans);
+        --font-font-heading: var(--font-heading);
+        --font-font-serif: var(--font-serif);
+        --font-font-mono: var(--font-mono);
+
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+      }
+
+      :root {
+          --background: #0D0E12;
+        --foreground: #F8F9FA;
+        --primary: #4361EE;
+        --primary-foreground: #FFFFFF;
+        --secondary: #1E202A;
+        --secondary-foreground: #F8F9FA;
+        --muted: #232530;
+        --muted-foreground: #71768B;
+        --accent: #4361EE;
+        --accent-foreground: #FFFFFF;
+        --destructive: #EF4444;
+        --card: #15171E;
+        --card-foreground: #F8F9FA;
+        --popover: #15171E;
+        --popover-foreground: #F8F9FA;
+        --border: #1E202A;
+        --input: #15171E;
+        --ring: #4361EE;
+        --chart-1: #4361EE;
+        --chart-2: #8B5CF6;
+        --chart-3: #06B6D4;
+        --chart-4: #10B981;
+        --chart-5: #F59E0B;
+
+        --font-sans: "Inter";
+        --font-heading: "Inter";
+        --font-serif: "Playfair Display";
+        --font-mono: "JetBrains Mono";
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/30 antialiased flex flex-col"
+    >
+      <header
+        class="sticky top-0 z-40 bg-background/95 backdrop-blur-md px-4 pt-12 pb-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-4">
+          <h1 class="text-2xl font-medium font-heading tracking-tight">Contacts</h1>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            class="w-8 h-8 rounded-full flex items-center justify-center bg-secondary hover:bg-muted transition-colors text-primary"
+          >
+            <iconify-icon icon="hugeicons:user-add-01" class="text-xl"></iconify-icon>
+          </button>
+        </div>
+      </header>
+      <div class="px-4 pb-4">
+        <div class="relative flex items-center w-full">
+          <iconify-icon
+            icon="hugeicons:search-01"
+            class="absolute left-4 text-muted-foreground text-lg"
+          ></iconify-icon
+          ><input
+            type="text"
+            placeholder="Search contacts"
+            class="w-full bg-input text-foreground text-[15px] rounded-2xl pl-11 pr-4 py-3 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-shadow placeholder:text-muted-foreground/70 font-light"
+          />
+        </div>
+      </div>
+      <main class="flex-1">
+        <div class="px-4 py-2 space-y-1">
+          <button
+            class="w-full flex items-center gap-4 px-3 py-2.5 rounded-2xl hover:bg-secondary transition-colors text-primary"
+          >
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <iconify-icon icon="hugeicons:user-add-02" class="text-xl"></iconify-icon>
+            </div>
+            <span class="font-medium text-[15px]">Add New Contact</span></button
+          ><button
+            class="w-full flex items-center gap-4 px-3 py-2.5 rounded-2xl hover:bg-secondary transition-colors"
+          >
+            <div
+              class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground"
+            >
+              <iconify-icon icon="hugeicons:user-group-02" class="text-xl"></iconify-icon>
+            </div>
+            <span class="font-medium text-[15px]">New Group</span>
+          </button>
+        </div>
+        <section class="mt-6">
+          <div class="px-6 mb-3 flex items-center justify-between">
+            <h2 class="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
+              Suggested
+            </h2>
+            <button class="text-[11px] font-bold text-primary uppercase tracking-widest">
+              View All
+            </button>
+          </div>
+          <div
+            class="flex gap-4 overflow-x-auto px-4 pb-2 scrollbar-hide"
+            style="scrollbar-width: none;"
+          >
+            <div class="flex flex-col items-center gap-2 min-w-[72px]">
+              <img
+                src="https://randomuser.me/api/portraits/men/45.jpg"
+                class="w-16 h-16 rounded-full object-cover border-2 border-primary/20 p-0.5"
+              /><span class="text-[11px] font-medium text-center">Viktor</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 min-w-[72px]">
+              <img
+                src="https://randomuser.me/api/portraits/women/12.jpg"
+                class="w-16 h-16 rounded-full object-cover border-2 border-primary/20 p-0.5"
+              /><span class="text-[11px] font-medium text-center">Marina</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 min-w-[72px]">
+              <img
+                src="https://randomuser.me/api/portraits/men/88.jpg"
+                class="w-16 h-16 rounded-full object-cover border-2 border-primary/20 p-0.5"
+              /><span class="text-[11px] font-medium text-center">Dmitry</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 min-w-[72px]">
+              <img
+                src="https://randomuser.me/api/portraits/women/33.jpg"
+                class="w-16 h-16 rounded-full object-cover border-2 border-primary/20 p-0.5"
+              /><span class="text-[11px] font-medium text-center">Olga</span>
+            </div>
+          </div>
+        </section>
+        <section class="mt-8">
+          <div class="px-6 py-2 bg-secondary/30">
+            <h2 class="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
+              On Noris
+            </h2>
+          </div>
+          <div class="divide-y divide-border/30">
+            <div
+              class="px-4 py-3 flex items-center gap-4 hover:bg-card/50 transition-colors cursor-pointer"
+            >
+              <img
+                src="https://randomuser.me/api/portraits/men/1.jpg"
+                class="w-10 h-10 rounded-full object-cover"
+              />
+              <div class="flex-1 flex flex-col">
+                <span class="font-medium text-[15px]">Artem Sokolov</span
+                ><span class="text-xs text-primary font-medium">online</span>
+              </div>
+            </div>
+            <div
+              class="px-4 py-3 flex items-center gap-4 hover:bg-card/50 transition-colors cursor-pointer"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center font-medium text-muted-foreground"
+              >
+                B
+              </div>
+              <div class="flex-1 flex flex-col">
+                <span class="font-medium text-[15px]">Boris Volkov</span
+                ><span class="text-xs text-muted-foreground font-light">last seen 2h ago</span>
+              </div>
+            </div>
+            <div
+              class="px-4 py-3 flex items-center gap-4 hover:bg-card/50 transition-colors cursor-pointer"
+            >
+              <img
+                src="https://randomuser.me/api/portraits/men/10.jpg"
+                class="w-10 h-10 rounded-full object-cover"
+              />
+              <div class="flex-1 flex flex-col">
+                <span class="font-medium text-[15px]">Denis Petrov</span
+                ><span class="text-xs text-muted-foreground font-light">last seen yesterday</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-2 mt-4 bg-secondary/30">
+            <h2 class="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
+              Not on Noris
+            </h2>
+          </div>
+          <div class="divide-y divide-border/30">
+            <div
+              class="px-4 py-3 flex items-center justify-between hover:bg-card/50 transition-colors"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center font-medium text-muted-foreground"
+                >
+                  K
+                </div>
+                <span class="font-medium text-[15px]">Kirill M.</span>
+              </div>
+              <button
+                class="px-4 py-1.5 rounded-full border border-primary text-primary text-[12px] font-bold tracking-tight hover:bg-primary/10 transition-colors"
+              >
+                INVITE
+              </button>
+            </div>
+            <div
+              class="px-4 py-3 flex items-center justify-between hover:bg-card/50 transition-colors"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center font-medium text-muted-foreground"
+                >
+                  L
+                </div>
+                <span class="font-medium text-[15px]">Lana Rey</span>
+              </div>
+              <button
+                class="px-4 py-1.5 rounded-full border border-primary text-primary text-[12px] font-bold tracking-tight hover:bg-primary/10 transition-colors"
+              >
+                INVITE
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <nav
+        class="fixed bottom-0 left-0 right-0 h-20 bg-background/80 backdrop-blur-xl border-t border-border/50 flex items-center justify-around px-2 z-50"
+      >
+        <a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:message-multiple-01" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Chats</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:call" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Calls</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary"
+          ><iconify-icon icon="hugeicons:contact-book" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Contacts</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:settings-01" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Settings</span></a
+        >
+      </nav>
+    </div>
+  </body>
+</html>

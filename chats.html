@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-font-sans: var(--font-sans);
+        --font-font-heading: var(--font-heading);
+        --font-font-serif: var(--font-serif);
+        --font-font-mono: var(--font-mono);
+
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+      }
+
+      :root {
+          --background: #0D0E12;
+        --foreground: #F8F9FA;
+        --primary: #4361EE;
+        --primary-foreground: #FFFFFF;
+        --secondary: #1E202A;
+        --secondary-foreground: #F8F9FA;
+        --muted: #232530;
+        --muted-foreground: #71768B;
+        --accent: #4361EE;
+        --accent-foreground: #FFFFFF;
+        --destructive: #EF4444;
+        --card: #15171E;
+        --card-foreground: #F8F9FA;
+        --popover: #15171E;
+        --popover-foreground: #F8F9FA;
+        --border: #1E202A;
+        --input: #15171E;
+        --ring: #4361EE;
+        --chart-1: #4361EE;
+        --chart-2: #8B5CF6;
+        --chart-3: #06B6D4;
+        --chart-4: #10B981;
+        --chart-5: #F59E0B;
+
+        --font-sans: "Inter";
+        --font-heading: "Inter";
+        --font-serif: "Playfair Display";
+        --font-mono: "JetBrains Mono";
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/30 antialiased flex flex-col"
+    >
+      <header
+        class="sticky top-0 z-40 bg-background/95 backdrop-blur-md px-4 pt-12 pb-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-4">
+          <button
+            class="w-8 h-8 rounded-full flex items-center justify-center bg-secondary hover:bg-muted transition-colors"
+          >
+            <iconify-icon icon="hugeicons:menu-01" class="text-xl"></iconify-icon>
+          </button>
+          <h1 class="text-2xl font-medium font-heading tracking-tight">Chats</h1>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            class="w-8 h-8 rounded-full flex items-center justify-center bg-secondary hover:bg-muted transition-colors text-primary"
+          >
+            <iconify-icon icon="hugeicons:plus-sign" class="text-xl"></iconify-icon>
+          </button>
+        </div>
+      </header>
+      <div class="px-4 pb-2">
+        <div class="relative flex items-center w-full">
+          <iconify-icon
+            icon="hugeicons:search-01"
+            class="absolute left-4 text-muted-foreground text-lg"
+          ></iconify-icon
+          ><input
+            type="text"
+            placeholder="Search chats and messages"
+            class="w-full bg-input text-foreground text-[15px] rounded-2xl pl-11 pr-4 py-3 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-shadow placeholder:text-muted-foreground/70 font-light"
+          />
+        </div>
+      </div>
+      <div
+        class="px-4 py-3 flex gap-2 overflow-x-auto scrollbar-hide"
+        style="scrollbar-width: none;"
+      >
+        <button
+          class="snap-start whitespace-nowrap px-4 py-1.5 rounded-full bg-secondary text-primary font-medium text-[13px] transition-colors"
+        >
+          All</button
+        ><button
+          class="snap-start whitespace-nowrap px-4 py-1.5 rounded-full bg-transparent border border-border text-muted-foreground hover:bg-secondary/50 font-medium text-[13px] transition-colors"
+        >
+          Unread</button
+        ><button
+          class="snap-start whitespace-nowrap px-4 py-1.5 rounded-full bg-transparent border border-border text-muted-foreground hover:bg-secondary/50 font-medium text-[13px] transition-colors"
+        >
+          Groups</button
+        ><button
+          class="snap-start whitespace-nowrap px-4 py-1.5 rounded-full bg-transparent border border-border text-muted-foreground hover:bg-secondary/50 font-medium text-[13px] transition-colors"
+        >
+          Channels</button
+        ><button
+          class="snap-start whitespace-nowrap px-4 py-1.5 rounded-full bg-transparent border border-border text-muted-foreground hover:bg-secondary/50 font-medium text-[13px] transition-colors"
+        >
+          Bots
+        </button>
+      </div>
+      <main class="flex-1 flex flex-col">
+        <div
+          class="px-4 py-3 flex items-start gap-3 hover:bg-card/50 transition-colors cursor-pointer group relative"
+        >
+          <div class="relative">
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="Elena"
+              class="w-12 h-12 rounded-full object-cover bg-secondary"
+            />
+            <div
+              class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-background rounded-full flex items-center justify-center"
+            >
+              <div class="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-0.5">
+              <div class="flex items-center gap-1.5">
+                <span class="font-medium text-[15px] truncate">Design Sync</span
+                ><iconify-icon
+                  icon="hugeicons:pin-01"
+                  class="text-muted-foreground text-[10px]"
+                ></iconify-icon>
+              </div>
+              <span class="text-[11px] text-muted-foreground font-medium tracking-wide"
+                >10:42 AM</span
+              >
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-[13px] text-primary font-medium">Elena:</span>
+              <p class="text-[13px] text-muted-foreground font-light leading-snug truncate">
+                Here are the updated files for the new kinetic theme. Let me know what you think!
+              </p>
+            </div>
+          </div>
+          <div
+            class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+        </div>
+        <div
+          class="px-4 py-3 flex items-start gap-3 hover:bg-card/50 transition-colors cursor-pointer"
+        >
+          <div
+            class="relative w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center font-medium text-lg"
+          >
+            T
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-0.5">
+              <div class="flex items-center gap-1.5">
+                <span class="font-medium text-[15px] truncate">Tech Leads HQ</span
+                ><iconify-icon
+                  icon="hugeicons:pin-01"
+                  class="text-muted-foreground text-[10px]"
+                ></iconify-icon>
+              </div>
+              <span class="text-[11px] text-muted-foreground font-medium tracking-wide"
+                >YESTERDAY</span
+              >
+            </div>
+            <p class="text-[13px] text-muted-foreground font-light leading-snug line-clamp-2">
+              Mark: We need to finalize the API schema before the weekend. Deployment is scheduled
+              for Monday 8AM.
+            </p>
+          </div>
+        </div>
+        <div class="w-full h-px bg-border/50 my-1"></div>
+        <div
+          class="px-4 py-3 flex items-start gap-3 hover:bg-card/50 transition-colors cursor-pointer"
+        >
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="Alexey"
+            class="w-12 h-12 rounded-full object-cover bg-secondary"
+          />
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-0.5">
+              <span class="font-medium text-[15px] truncate text-foreground">Alexey Ivanov</span
+              ><span class="text-[11px] text-primary font-medium tracking-wide">09:15 AM</span>
+            </div>
+            <div class="flex items-center justify-between gap-3">
+              <p class="text-[13px] text-foreground/90 font-light leading-snug line-clamp-2">
+                Are we still on for the meeting? I have some ideas about the new architecture
+                patterns.
+              </p>
+              <div
+                class="min-w-[18px] h-[18px] rounded-full bg-primary flex items-center justify-center px-1"
+              >
+                <span class="text-[10px] text-primary-foreground font-bold leading-none mt-0.5"
+                  >3</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="px-4 py-3 flex items-start gap-3 hover:bg-card/50 transition-colors cursor-pointer"
+        >
+          <img
+            src="https://randomuser.me/api/portraits/women/68.jpg"
+            alt="Sarah"
+            class="w-12 h-12 rounded-full object-cover bg-secondary"
+          />
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-0.5">
+              <span class="font-medium text-[15px] truncate">Sarah Jenkins</span
+              ><span class="text-[11px] text-muted-foreground font-medium tracking-wide">TUE</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <iconify-icon
+                icon="hugeicons:tick-double-02"
+                class="text-primary text-sm"
+              ></iconify-icon>
+              <p class="text-[13px] text-muted-foreground font-light leading-snug truncate">
+                Got it, thanks for the update!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="px-4 py-3 flex items-start gap-3 hover:bg-card/50 transition-colors cursor-pointer"
+        >
+          <div
+            class="relative w-12 h-12 rounded-full bg-secondary text-muted-foreground flex items-center justify-center font-medium text-lg"
+          >
+            <iconify-icon icon="hugeicons:bot" class="text-2xl"></iconify-icon>
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-0.5">
+              <span class="font-medium text-[15px] truncate">Weather Bot</span
+              ><span class="text-[11px] text-muted-foreground font-medium tracking-wide">MON</span>
+            </div>
+            <p class="text-[13px] text-muted-foreground font-light leading-snug line-clamp-2">
+              Tomorrow in Berlin: 14°C, partly cloudy. Chance of rain is 20%. Wind 12km/h.
+            </p>
+          </div>
+        </div>
+        <div
+          class="px-4 py-3 flex items-start gap-3 hover:bg-card/50 transition-colors cursor-pointer"
+        >
+          <img
+            src="https://randomuser.me/api/portraits/men/85.jpg"
+            alt="David"
+            class="w-12 h-12 rounded-full object-cover bg-secondary"
+          />
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-center justify-between mb-0.5">
+              <span class="font-medium text-[15px] truncate">David Chen</span
+              ><span class="text-[11px] text-muted-foreground font-medium tracking-wide">SUN</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <iconify-icon
+                icon="hugeicons:tick-02"
+                class="text-muted-foreground text-sm"
+              ></iconify-icon>
+              <p class="text-[13px] text-muted-foreground font-light leading-snug truncate">
+                Send me the repository link when you're done.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="h-6"></div>
+      </main>
+      <button
+        class="fixed right-5 bottom-24 w-14 h-14 bg-primary text-primary-foreground rounded-2xl flex items-center justify-center shadow-lg hover:bg-primary/90 transition-transform active:scale-95 z-40"
+      >
+        <iconify-icon icon="hugeicons:edit-02" class="text-2xl"></iconify-icon>
+      </button>
+      <nav
+        class="fixed bottom-0 left-0 right-0 h-20 bg-background/80 backdrop-blur-xl border-t border-border/50 flex items-center justify-around px-2 z-50"
+      >
+        <a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary"
+          ><iconify-icon icon="hugeicons:message-multiple-01" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Chats</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:call" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Calls</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          ><iconify-icon icon="hugeicons:contact-book" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Contacts</span></a
+        ><a
+          href="#"
+          class="flex flex-col items-center justify-center w-full h-full gap-1 text-muted-foreground hover:text-foreground transition-colors relative"
+          ><iconify-icon icon="hugeicons:settings-01" class="text-2xl"></iconify-icon
+          ><span class="text-[10px] font-medium tracking-wide">Settings</span>
+          <div class="absolute top-3 right-5 w-2 h-2 bg-destructive rounded-full"></div
+        ></a>
+      </nav>
+    </div>
+  </body>
+</html>
